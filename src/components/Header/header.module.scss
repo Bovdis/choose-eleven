@@ -1,0 +1,22 @@
+@import '../../variables';
+
+.navigationList {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding-right: 20px;
+
+  .listElement {
+    display: inline-block;
+
+    .link {
+      padding: 0 20px;
+      text-decoration: none;
+      color: $link-text;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  
+}
