@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
+import PlayersList from '../components/PlayersList';
 
-const Players = () => {
+const Players: FC = () => {
+
   return (
     <div>
-      Players
+       <PlayersList />
     </div>
-  )
+  );
 }
 
 export default Players;

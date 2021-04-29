@@ -1,0 +1,41 @@
+@import '../../variables';
+
+.playerListTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  &Header {
+    font-weight: $font-weight-bold;
+    border-bottom: 1px solid $light-gray;
+    
+  }
+
+  &Content {
+    font-weight: $font-weight-semi-bold;
+  }
+
+  &Pagination {
+    list-style: none;
+    cursor: pointer;
+    padding-inline-start: 0;
+
+    li {
+      display: inline-block;
+      padding: 0 10px;
+    }
+
+    .active {
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+    }
+
+    .inactive {
+      color: $link-text;
+    }
+
+  }
+
+  td {
+    height: 50px;
+  }
+}
