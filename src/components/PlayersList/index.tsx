@@ -6,6 +6,7 @@ import usePagination from './usePagination';
 import styles from './playerslist.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import transformPlayersData from '../../util/transformPlayersData';
 
 const PlayersList: FC = () => {
   const [players, setPlayers] = useState<Players>();
@@ -21,7 +22,7 @@ const PlayersList: FC = () => {
   
   const allPlayers = async() => {
     const api = await getPlayers();
-    setPlayers(api.data.elements);
+    setPlayers(transformPlayersData(api.data));
   }
 
   useEffect(() => {

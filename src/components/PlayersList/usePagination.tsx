@@ -26,14 +26,12 @@ const usePagination = ({ players }: Props) => {
     }
   }
 
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber)
-  }
+  const handlePageChange = setCurrentPage;
 
   return {
     currentPage,
     currentPlayers,
-    handlePageChange,
+    handlePageChange: setCurrentPage,
     pagination
   }
 }

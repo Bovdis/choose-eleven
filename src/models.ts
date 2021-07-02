@@ -6,6 +6,7 @@ export type Routes = {
 
 export type GetPlayers = {
   elements: Player[];
+  teams: Team[];
 }
 
 export type Player = {
@@ -19,7 +20,7 @@ export type Player = {
   second_name: string;
   selected_by_percent: string
   squad_number: number;
-  team: number;
+  team: number | Team['name'];
   team_code: number;
   total_points: number;
   web_name: string;
@@ -27,3 +28,19 @@ export type Player = {
 };
 
 export type Players = Player[];
+
+export type Team = {
+  code: number,
+  draw: number,
+  form: null,
+  id: number,
+  loss: number,
+  name: string,
+  played: number,
+  points: number,
+  position: number,
+  short_name: string,
+  unavailable: boolean,
+  win: number,
+  pulse_id: number
+}
