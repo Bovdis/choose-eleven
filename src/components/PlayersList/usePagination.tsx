@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Players } from '../../models';
+import { useState } from "react";
+import { Players } from "../../models";
 
 type Props = {
-  players?: Players
-}
+  players?: Players;
+};
 
 const usePagination = ({ players }: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,8 +12,6 @@ const usePagination = ({ players }: Props) => {
   const indexOfLastTodo = currentPage * playersPerPage;
   const indexOfFirstTodo = indexOfLastTodo - playersPerPage;
   const currentPlayers = players?.slice(indexOfFirstTodo, indexOfLastTodo);
-
-  
 
   const pagination = () => {
     if (players) {
@@ -24,16 +22,14 @@ const usePagination = ({ players }: Props) => {
 
       return pageNumbers;
     }
-  }
-
-  const handlePageChange = setCurrentPage;
+  };
 
   return {
     currentPage,
     currentPlayers,
     handlePageChange: setCurrentPage,
-    pagination
-  }
-}
+    pagination,
+  };
+};
 
-export default usePagination
+export default usePagination;

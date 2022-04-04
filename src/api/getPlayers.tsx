@@ -1,6 +1,5 @@
-import axios from 'axios'
-import React from 'react'
+import axios from "axios";
 
 export const getPlayers = () => {
-  return axios.get('https://fantasy.premierleague.com/api/bootstrap-static/');
-}
+  return axios.get("https://fantasy.premierleague.com/api/bootstrap-static/");
+};
