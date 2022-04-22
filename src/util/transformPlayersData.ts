@@ -5,7 +5,13 @@ const transformPlayersData = (apiResponse: GetPlayers) => {
     const matchTeam = apiResponse.teams.filter(
       (team) => team.id === player.team
     )[0];
+    const playerPosition = apiResponse.element_types.find(
+      (position) => position.id === player.element_type
+    );
+
     player.team = matchTeam.name;
+    player.position = playerPosition;
+
     return player;
   });
 };

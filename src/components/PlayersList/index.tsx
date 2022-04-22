@@ -1,28 +1,39 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FC, useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import React, { FC, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { getPlayers } from "../../api/getPlayers";
-import { Players } from "../../models";
+import { Player } from "../../models";
+import useStores from "../../stores/useStores";
 import transformPlayersData from "../../util/transformPlayersData";
 import PlayerListElement from "../PlayerListElement";
 import styles from "./playerslist.module.scss";
 import usePagination from "./usePagination";
 
 const PlayersList: FC = () => {
-  const [players, setPlayers] = useState<Players>();
+  const history = useHistory();
+  const {
+    playersStore: { allPlayers, setAllPlayers, setCurrentPlayer },
+  } = useStores();
 
   const { currentPage, currentPlayers, handlePageChange, pagination } =
     usePagination({
-      players,
+      players: allPlayers,
     });
 
-  const allPlayers = async () => {
+  const getAllPlayers = async () => {
     const api = await getPlayers();
-    setPlayers(transformPlayersData(api.data));
+    setAllPlayers(transformPlayersData(api.data));
+  };
+
+  const clickOnSpecificPlayer = (player: Player) => {
+    setCurrentPlayer(player);
+    history.push(`/player/${player.id}/${player.web_name}`);
   };
 
   useEffect(() => {
-    allPlayers();
+    getAllPlayers();
   }, []);
 
   const renderPageNumbers = pagination();
@@ -31,7 +42,7 @@ const PlayersList: FC = () => {
     <table className={styles.playerListTable}>
       <thead className={styles.playerListTableHeader}>
         <tr>
-          <td>ID</td>
+          <td>Position</td>
           <td>First name</td>
           <td>Last name</td>
           <td>Team</td>
@@ -40,17 +51,21 @@ const PlayersList: FC = () => {
         </tr>
       </thead>
       <tbody className={styles.playerListTableContent}>
-        {currentPlayers &&
-          currentPlayers.map((player) => (
-            <tr key={player.id}>
-              <PlayerListElement player={player} />
-            </tr>
-          ))}
+        {currentPlayers?.map((player) => (
+          <tr key={player.id}>
+            <PlayerListElement
+              player={player}
+              onClick={() => {
+                clickOnSpecificPlayer(player);
+              }}
+            />
+          </tr>
+        ))}
       </tbody>
       <tfoot className={styles.playerListTablePagination}>
         <tr>
           <td colSpan={6}>
-            <ul className={styles.playerListTablePagination}>
+            <ul>
               <FontAwesomeIcon
                 icon={faArrowLeft}
                 onClick={() => handlePageChange(currentPage - 1)}
@@ -82,4 +97,4 @@ const PlayersList: FC = () => {
   );
 };
 
-export default PlayersList;
+export default observer(PlayersList);

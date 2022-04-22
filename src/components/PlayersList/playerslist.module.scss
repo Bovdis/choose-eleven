@@ -1,4 +1,4 @@
-@import '../../variables';
+@import "../../variables";
 
 .playerListTable {
   width: 100%;
@@ -7,21 +7,31 @@
   &Header {
     font-weight: $font-weight-bold;
     border-bottom: 1px solid $light-gray;
-    
   }
 
   &Content {
     font-weight: $font-weight-semi-bold;
+
+    tr {
+      position: relative;
+      td {
+        padding: 8px 0;
+      }
+    }
   }
 
   &Pagination {
     list-style: none;
     cursor: pointer;
-    padding-inline-start: 0;
+    border-top: 1px solid $light-gray;
 
-    li {
-      display: inline-block;
-      padding: 0 10px;
+    ul {
+      padding-inline-start: 0;
+
+      li {
+        display: inline-block;
+        padding: 0 10px;
+      }
     }
 
     .active {
@@ -32,10 +42,5 @@
     .inactive {
       color: $link-text;
     }
-
-  }
-
-  td {
-    height: 50px;
   }
 }
