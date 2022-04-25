@@ -62,3 +62,9 @@ type ElementType = {
   sub_positions_locked: [];
   ui_shirt_specific: boolean;
 };
+
+export type User = {
+  name: string;
+  budget: number;
+  players: Players;
+};

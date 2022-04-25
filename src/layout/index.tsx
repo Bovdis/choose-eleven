@@ -4,9 +4,11 @@ import Header from "../components/Header";
 import { Routes } from "../models";
 import Players from "../pages/Players";
 import Player from "../pages/Player";
+import ChooseUser from "../pages/ChooseUser";
 
 export const routes: Routes = [
-  { path: "/", name: "Players", component: Players },
+  { path: "/", name: "Change user", component: ChooseUser },
+  { path: "/players", name: "Players", component: Players },
   { path: "/player/:id/:name", name: "Player", component: Player },
 ];
 
