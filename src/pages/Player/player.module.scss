@@ -1,0 +1,31 @@
+.backLink {
+  display: flex;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+
+  svg {
+    padding-right: 10px;
+  }
+}
+
+.singlePlayer {
+  &Header {
+    display: flex;
+    padding-top: 25px;
+  }
+
+  &BasicInfo {
+    flex: 8;
+
+    p {
+      display: flex;
+    }
+  }
+
+  &Image {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+  }
+}
