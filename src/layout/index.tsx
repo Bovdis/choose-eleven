@@ -5,10 +5,12 @@ import { Routes } from "../models";
 import Players from "../pages/Players";
 import Player from "../pages/Player";
 import ChooseUser from "../pages/ChooseUser";
+import Squad from "../pages/Squad";
 
 export const routes: Routes = [
   { path: "/", name: "Change user", component: ChooseUser },
   { path: "/players", name: "Players", component: Players },
+  { path: "/squad", name: "Squad", component: Squad },
   { path: "/player/:id/:name", name: "Player", component: Player },
 ];
 

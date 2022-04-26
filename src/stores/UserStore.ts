@@ -26,7 +26,7 @@ class UsersStore {
 
   removeUser = (userName: string) => {
     runInAction(() => {
-      this.allUsers.filter((u) => u.name !== userName);
+      this.allUsers = this.allUsers.filter((u) => u.name !== userName);
     });
   };
 }

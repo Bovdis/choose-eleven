@@ -1,8 +1,15 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { observer } from "mobx-react-lite";
 import React, { FC, useState } from "react";
+import { useHistory } from "react-router-dom";
 import useStores from "../../stores/useStores";
+import styles from "./chooseUser.module.scss";
 
 const ChooseUser: FC = () => {
   const [userName, setUserName] = useState("");
+
+  const history = useHistory();
 
   const {
     usersStore: { allUsers, addNewUser, removeUser, setCurrentUser },
@@ -14,9 +21,21 @@ const ChooseUser: FC = () => {
         <input
           type="text"
           placeholder="Input user name"
-          onChange={(e) => setUserName(e.target.value)}
+          className={styles.inputUser}
+          value={userName}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              addNewUser(userName);
+              setUserName("");
+            }
+          }}
         />
         <button
+          className={styles.addUserBtn}
+          disabled={!userName}
           onClick={() => {
             addNewUser(userName);
             setUserName("");
@@ -25,14 +44,25 @@ const ChooseUser: FC = () => {
           Add user
         </button>
       </div>
-      <div>
-        <p>Users:</p>
-        <ul>
+      <div className={styles.userList}>
+        <p>Managers:</p>
+        <ul className={styles.userListUl}>
           {allUsers.map((user) => (
-            <li>
-              <button onClick={() => setCurrentUser(user)}>{user.name}</button>
-              <button onClick={() => removeUser(user.name)}>
-                Remove user icon (trash can)
+            <li key={user.name}>
+              <button
+                className={styles.userListNames}
+                onClick={() => {
+                  setCurrentUser(user);
+                  history.push("/players");
+                }}
+              >
+                {user.name}
+              </button>
+              <button
+                className={styles.userListRemoveBtn}
+                onClick={() => removeUser(user.name)}
+              >
+                <FontAwesomeIcon icon={faTrash} />
               </button>
             </li>
           ))}
@@ -42,4 +72,4 @@ const ChooseUser: FC = () => {
   );
 };
 
-export default ChooseUser;
+export default observer(ChooseUser);

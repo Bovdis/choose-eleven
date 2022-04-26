@@ -11,12 +11,10 @@ const Player: FC = () => {
     playersStore: { currentPlayer },
   } = useStores();
 
-  console.log("currentPlayer", currentPlayer);
-
   return (
     <>
       <BackLink
-        href="/"
+        href="/players"
         icon={faHandPointLeft}
         linkText="Back to Players"
         passedClassName={styles.backLink}
