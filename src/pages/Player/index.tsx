@@ -9,6 +9,7 @@ import transformPlayerValue from "../../util/transformPlayerValue";
 const Player: FC = () => {
   const {
     playersStore: { currentPlayer },
+    usersStore: { addNewPlayer },
   } = useStores();
 
   return (
@@ -21,6 +22,9 @@ const Player: FC = () => {
       />
       <div className={styles.singlePlayerHeader}>
         <div className={styles.singlePlayerBasicInfo}>
+          <button onClick={() => addNewPlayer(currentPlayer)}>
+            Add player to your team
+          </button>
           <p>First name: {currentPlayer.first_name}</p>
           <p>Last name: {currentPlayer.second_name}</p>
           <p>Position: {currentPlayer.position?.singular_name}</p>

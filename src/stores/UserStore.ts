@@ -1,9 +1,10 @@
 import { makeObservable, observable, runInAction } from "mobx";
-import { User } from "../models";
+import { Player, User } from "../models";
 
 class UsersStore {
   allUsers: User[] = [];
   currentUser = {} as User;
+  playerExistError: boolean = false;
 
   constructor() {
     makeObservable(this, {
@@ -15,6 +16,21 @@ class UsersStore {
   setCurrentUser = (user: User) => {
     runInAction(() => {
       this.currentUser = user;
+    });
+  };
+
+  addNewPlayer = (player: Player) => {
+    runInAction(() => {
+      const index = this.currentUser.players.findIndex(
+        (p) => p.id === player.id
+      );
+
+      if (index === -1) {
+        this.currentUser.players.push(player);
+        this.playerExistError = false;
+      } else {
+        this.playerExistError = true;
+      }
     });
   };
 
