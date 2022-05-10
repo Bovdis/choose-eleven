@@ -1,0 +1,63 @@
+@import "../../variables";
+
+.inputUser {
+  border: 0;
+  //   border-bottom: 1px solid #87a9c2;
+  border-bottom: 1px solid $light-gray;
+  background-color: transparent;
+  width: 200px;
+  height: 30px;
+  position: relative;
+  margin-top: 30px;
+  padding-left: 10px;
+  margin-right: 20px;
+
+  //   &::placeholder {
+  //     position: absolute;
+  //     bottom: 0;
+  //   }
+
+  &:focus-visible {
+    outline: 0;
+  }
+}
+
+.addUserBtn {
+  height: 30px;
+  //   border: 1px solid #87a9c2;
+  border: 1px solid $light-gray;
+  padding: 5px 20px;
+  font-size: 13px;
+  color: #625f5f;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.userList {
+  margin-top: 50px;
+  color: $link-text;
+
+  &Ul {
+    list-style: none;
+    padding-inline-start: 0;
+
+    .userListNames {
+      //   color: $link-text;
+      border: 0;
+      background-color: transparent;
+      font-size: 14px;
+      cursor: pointer;
+      width: 400px;
+      height: 30px;
+      text-align: left;
+    }
+
+    .userListRemoveBtn {
+      border: 0;
+      background-color: transparent;
+      color: $red;
+    }
+  }
+}
