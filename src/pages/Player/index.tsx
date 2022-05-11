@@ -1,10 +1,11 @@
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 import { observer } from "mobx-react-lite";
 import React, { FC } from "react";
-import useStores from "../../stores/useStores";
 import BackLink from "../../components/BackLink";
-import styles from "./player.module.scss";
+import Button from "../../components/Button";
+import useStores from "../../stores/useStores";
 import transformPlayerValue from "../../util/transformPlayerValue";
+import styles from "./player.module.scss";
 
 const Player: FC = () => {
   const {
@@ -22,9 +23,11 @@ const Player: FC = () => {
       />
       <div className={styles.singlePlayerHeader}>
         <div className={styles.singlePlayerBasicInfo}>
-          <button onClick={() => addNewPlayer(currentPlayer)}>
-            Add player to your team
-          </button>
+          <Button
+            text="Add player to your team"
+            onClick={() => addNewPlayer(currentPlayer)}
+            displayFlex
+          />
           <p>First name: {currentPlayer.first_name}</p>
           <p>Last name: {currentPlayer.second_name}</p>
           <p>Position: {currentPlayer.position?.singular_name}</p>

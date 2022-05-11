@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer } from "mobx-react-lite";
 import React, { FC, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Button from "../../components/Button";
 import useStores from "../../stores/useStores";
 import styles from "./chooseUser.module.scss";
 
@@ -33,16 +34,14 @@ const ChooseUser: FC = () => {
             }
           }}
         />
-        <button
-          className={styles.addUserBtn}
+        <Button
+          text="Add user"
           disabled={!userName}
           onClick={() => {
             addNewUser(userName);
             setUserName("");
           }}
-        >
-          Add user
-        </button>
+        />
       </div>
       <div className={styles.userList}>
         <p>Managers:</p>

@@ -22,19 +22,6 @@
   }
 }
 
-.addUserBtn {
-  height: 30px;
-  //   border: 1px solid #87a9c2;
-  border: 1px solid $light-gray;
-  padding: 5px 20px;
-  font-size: 13px;
-  color: #625f5f;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
 .userList {
   margin-top: 50px;
   color: $link-text;
